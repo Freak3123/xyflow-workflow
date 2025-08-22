@@ -6,7 +6,12 @@ import {
 } from "@xyflow/react";
 import PlusDropdown from "@/components/plusDropdown";
 
-export default function ConditionalEdge(props: EdgeProps) {
+interface ConditionalEdgeData {
+  isLastNode?: (nodeId: string) => boolean;
+  onInsert?: (sourceId: string, targetId: string, type: "normal" | "conditional") => void;
+}
+
+export default function ConditionalEdge(props: EdgeProps & { data?: ConditionalEdgeData }) {
   const {
     id,
     data,
@@ -15,7 +20,7 @@ export default function ConditionalEdge(props: EdgeProps) {
     targetX,
     targetY,
     sourceHandleId,
-    target, // <-- this gives you target node id
+    target,
   } = props;
 
   const [edgePath, labelX, labelY] = getSmoothStepPath({
