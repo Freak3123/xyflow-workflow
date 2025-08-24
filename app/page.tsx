@@ -56,13 +56,15 @@ export default function Home() {
   targetId: string,
   type: "normal" | "conditional"
 ) => {
+  const plusNode = nodes.find((n) => n.id === targetId);
+    if (!plusNode) return;
   const newNodeId = getNodeId();
 
   if (type === "normal") {
     // Create a new email node
     const newNode = {
       id: newNodeId,
-      position: { x: 0, y: 0 },
+      position: { x: plusNode.position.x + 200, y: plusNode.position.y - 100 },
       data: { label: `Email ${newNodeId}` },
       type: "email",
     };
@@ -94,7 +96,7 @@ export default function Home() {
     const conditionalId = newNodeId;
     const conditionalNode = {
       id: conditionalId,
-      position: { x: 0, y: 0 },
+      position: { x: plusNode.position.x + 200, y: plusNode.position.y - 100 },
       data: { label: "Conditional" },
       type: "conditional",
     };
@@ -102,7 +104,7 @@ export default function Home() {
     const noPlusId = getPlusId();
     const noPlus = {
       id: noPlusId,
-      position: { x: 150, y: 150 },
+      position: { x: plusNode.position.x + 400 , y: plusNode.position.y + 100 },
       data: {},
       type: "plusNode",
     };
