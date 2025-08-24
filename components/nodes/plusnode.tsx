@@ -25,10 +25,10 @@ export default function PlusNode({ id, onAdd }: PlusNodeProps) {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="center" side="bottom" className="w-40">
           <DropdownMenuItem onClick={() => onAdd(id, "normal")}>
-            ➕ Add Normal Node
+            ➕ Add Email
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onAdd(id, "conditional")}>
-            🔀 Add Conditional Node
+            🔀 Add Conditional Logic
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
